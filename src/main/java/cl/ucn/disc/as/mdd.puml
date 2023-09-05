@@ -1,0 +1,44 @@
+@startuml
+
+abstract class BaseModel {
+  + id: Long
+  + version: Long
+  + created: Instant
+  + modified: Instant
+}
+
+class Persona {
+  + rut: Integer
+  + nombre: String
+  + apellidos: String
+  + email: String
+  + telefono: String
+}
+
+class Edificio {
+  + constructora: String
+  + nombre: String
+  + direccion: String
+  + pisos: Integer
+}
+
+class Departamento {
+  + edificioID: Long
+  + numero: Integer
+  + piso: String
+}
+
+class Contrato {
+  + constructora: String
+  + personaID: Long
+  + pago: Instant
+}
+
+BaseModel <|-- Persona
+BaseModel <|-- Edificio
+BaseModel <|-- Departamento
+BaseModel <|-- Contrato
+
+Edificio "1" *-- "0..*" Departamento : Contiene
+
+@enduml

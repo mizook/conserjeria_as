@@ -32,6 +32,7 @@ class Contrato {
   + constructora: String
   + personaID: Long
   + pago: Instant
+  + monto: Integer
 }
 
 BaseModel <|-- Persona

@@ -1,0 +1,25 @@
+
+------------------------------------------------------------
+: Project Dependency Updates (report to plain text file)
+------------------------------------------------------------
+
+The following dependencies are using the latest milestone version:
+ - ch.qos.logback:logback-classic:1.4.11
+ - ch.qos.logback:logback-core:1.4.11
+ - com.github.ben-manes.versions:com.github.ben-manes.versions.gradle.plugin:0.48.0
+ - com.github.javafaker:javafaker:1.0.2
+ - com.google.code.gson:gson:2.10.1
+ - io.ebean:ebean:13.22.0
+ - io.ebean:ebean-ddl-generator:13.22.0
+ - io.ebean:ebean-test:13.22.0
+ - io.ebean:io.ebean.gradle.plugin:13.22.0
+ - io.ebean:querybean-generator:13.22.0
+ - io.javalin:javalin:5.6.2
+ - org.apache.commons:commons-lang3:3.13.0
+ - org.junit:junit-bom:5.10.0
+ - org.junit.jupiter:junit-jupiter:5.10.0
+ - org.projectlombok:lombok:1.18.30
+ - org.xerial:sqlite-jdbc:3.43.0.0
+
+Gradle release-candidate updates:
+ - Gradle: [8.3 -> 8.4-rc-2]

@@ -36,4 +36,10 @@ public class Contrato extends BaseModel {
      */
     @NotNull
     private Instant pago;
+
+    /**
+     * Monto del de pago de gastos comunes.
+     */
+    @NotNull
+    private Integer monto;
 }

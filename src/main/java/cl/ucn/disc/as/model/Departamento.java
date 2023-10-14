@@ -1,11 +1,11 @@
 package cl.ucn.disc.as.model;
 
 import io.ebean.annotation.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
 
 /**
  * Clase Departamento.
@@ -16,13 +16,15 @@ import javax.persistence.Entity;
 @AllArgsConstructor
 @Builder
 @Entity
+@Getter
 public class Departamento extends BaseModel {
 
     /**
-     * ID del Edificio.
+     * Edificio al que pertenece
      */
-    @NotNull
-    private Long edificioID;
+    @ManyToOne
+    @JoinColumn(name = "edificio_id")
+    private Edificio edificio;
 
     /**
      * Número del Departamento.
@@ -34,5 +36,5 @@ public class Departamento extends BaseModel {
      * Piso del Departamento.
      */
     @NotNull
-    private String piso;
+    private Integer piso;
 }

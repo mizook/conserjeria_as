@@ -9,13 +9,10 @@ import java.time.Instant;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.JoinColumn;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- * Clase Contrato.
+ * Clase Pago.
  *
  * @author Carlo Ramírez González
  */
@@ -24,23 +21,14 @@ import java.util.List;
 @Builder
 @Entity
 @Getter
-public class Contrato extends BaseModel {
+public class Pago extends BaseModel {
 
     /**
-     * Departamento.
+     * Contrato al que pertenece
      */
-    @NotNull
     @ManyToOne
-    @JoinColumn(name = "departamento_id")
-    private Departamento departamento;
-
-    /**
-     * Persona.
-     */
-    @NotNull
-    @ManyToOne
-    @JoinColumn(name = "persona_id")
-    private Persona persona;
+    @JoinColumn(name = "contrato_id")
+    private Contrato contrato;
 
     /**
      * Fecha de pago de gastos comunes.
@@ -49,8 +37,8 @@ public class Contrato extends BaseModel {
     private Instant fechaPago;
 
     /**
-     * Lista de pagos asociados a este contrato.
+     * Monto del pago.
      */
-    @OneToMany(mappedBy = "contrato")
-    private List<Pago> pagos = new ArrayList<>();
+    @NotNull
+    private Integer monto;
 }

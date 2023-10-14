@@ -10,6 +10,7 @@ import io.ebean.annotation.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.ToString;
+import lombok.Getter;
 import javax.persistence.Entity;
 
 /**
@@ -21,6 +22,7 @@ import javax.persistence.Entity;
 @AllArgsConstructor
 @Builder
 @Entity
+@Getter
 public class Persona extends BaseModel {
 
     /**

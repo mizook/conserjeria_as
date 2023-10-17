@@ -11,7 +11,6 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.JoinColumn;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -52,5 +51,5 @@ public class Contrato extends BaseModel {
      * Lista de pagos asociados a este contrato.
      */
     @OneToMany(mappedBy = "contrato")
-    private List<Pago> pagos = new ArrayList<>();
+    private List<Pago> pagos;
 }

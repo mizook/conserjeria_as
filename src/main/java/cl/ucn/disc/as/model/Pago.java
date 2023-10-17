@@ -1,10 +1,8 @@
 package cl.ucn.disc.as.model;
 
 import io.ebean.annotation.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.ToString;
-import lombok.Getter;
+import lombok.*;
+
 import java.time.Instant;
 
 import javax.persistence.Entity;
@@ -26,6 +24,7 @@ public class Pago extends BaseModel {
     /**
      * Contrato al que pertenece
      */
+    @Setter
     @ManyToOne
     @JoinColumn(name = "contrato_id")
     private Contrato contrato;

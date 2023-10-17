@@ -64,6 +64,15 @@ public interface Sistema {
     Contrato realizarContrato(Long idDuenio, Long idDepartamento, Instant fechaPago);
 
     /**
+     * Añade un pago a un contrato.
+     *
+     * @param contrato El contrato al cual se le quiere añadir el pago.
+     * @param pago El pago que se quiere añadir.
+     * @return El pago que fue añadido.
+     */
+    Pago addPago(Contrato contrato, Pago pago);
+
+    /**
      * @return Lista de todos los contratos en el sistema.
      */
     List<Contrato> getContratos();

@@ -9,7 +9,6 @@ import lombok.ToString;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.CascadeType;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -53,7 +52,7 @@ public class Edificio extends BaseModel {
      */
     @NotNull
     @OneToMany(mappedBy = "edificio", cascade = CascadeType.ALL)
-    private List<Departamento> departamentos = new ArrayList<>();
+    private List<Departamento> departamentos;
 
     /**
      * Método para añadir un departamento a la lista.

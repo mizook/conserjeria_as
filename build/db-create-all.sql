@@ -1,25 +1,27 @@
 -- apply changes
 create table contrato (
   id                            integer not null,
-  edificio_id                   integer not null,
+  departamento_id               integer not null,
   persona_id                    integer not null,
-  pago                          timestamp not null,
-  monto                         integer not null,
+  fecha_pago                    timestamp not null,
   version                       integer not null,
   created                       timestamp not null,
   modified                      timestamp not null,
-  constraint pk_contrato primary key (id)
+  constraint pk_contrato primary key (id),
+  foreign key (departamento_id) references departamento (id) on delete restrict on update restrict,
+  foreign key (persona_id) references persona (id) on delete restrict on update restrict
 );
 
 create table departamento (
   id                            integer not null,
-  edificio_id                   integer not null,
+  edificio_id                   integer,
   numero                        integer not null,
-  piso                          varchar(255) not null,
+  piso                          integer not null,
   version                       integer not null,
   created                       timestamp not null,
   modified                      timestamp not null,
-  constraint pk_departamento primary key (id)
+  constraint pk_departamento primary key (id),
+  foreign key (edificio_id) references edificio (id) on delete restrict on update restrict
 );
 
 create table edificio (
@@ -32,6 +34,18 @@ create table edificio (
   created                       timestamp not null,
   modified                      timestamp not null,
   constraint pk_edificio primary key (id)
+);
+
+create table pago (
+  id                            integer not null,
+  contrato_id                   integer,
+  fecha_pago                    timestamp not null,
+  monto                         integer not null,
+  version                       integer not null,
+  created                       timestamp not null,
+  modified                      timestamp not null,
+  constraint pk_pago primary key (id),
+  foreign key (contrato_id) references contrato (id) on delete restrict on update restrict
 );
 
 create table persona (

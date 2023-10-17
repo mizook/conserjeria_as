@@ -9,7 +9,6 @@ import io.ebean.Query;
 import io.ebean.Transaction;
 import io.ebean.typequery.Generated;
 import io.ebean.typequery.PInstant;
-import io.ebean.typequery.PInteger;
 import io.ebean.typequery.PLong;
 import io.ebean.typequery.TQAssocBean;
 import io.ebean.typequery.TQRootBean;
@@ -39,10 +38,10 @@ public final class QContrato extends TQRootBean<Contrato,QContrato> {
   public PLong<QContrato> version;
   public PInstant<QContrato> created;
   public PInstant<QContrato> modified;
-  public PLong<QContrato> edificioId;
-  public PLong<QContrato> personaID;
-  public PInstant<QContrato> pago;
-  public PInteger<QContrato> monto;
+  public QDepartamento.Assoc<QContrato> departamento;
+  public QPersona.Assoc<QContrato> persona;
+  public PInstant<QContrato> fechaPago;
+  public QPago.Assoc<QContrato> pagos;
 
 
   /**
@@ -111,10 +110,10 @@ public final class QContrato extends TQRootBean<Contrato,QContrato> {
     public static PLong<QContrato> version = _alias.version;
     public static PInstant<QContrato> created = _alias.created;
     public static PInstant<QContrato> modified = _alias.modified;
-    public static PLong<QContrato> edificioId = _alias.edificioId;
-    public static PLong<QContrato> personaID = _alias.personaID;
-    public static PInstant<QContrato> pago = _alias.pago;
-    public static PInteger<QContrato> monto = _alias.monto;
+    public static QDepartamento.Assoc<QContrato> departamento = _alias.departamento;
+    public static QPersona.Assoc<QContrato> persona = _alias.persona;
+    public static PInstant<QContrato> fechaPago = _alias.fechaPago;
+    public static QPago.Assoc<QContrato> pagos = _alias.pagos;
   }
 
   /**  Association query bean */
@@ -125,10 +124,10 @@ public final class QContrato extends TQRootBean<Contrato,QContrato> {
     public PLong<R> version;
     public PInstant<R> created;
     public PInstant<R> modified;
-    public PLong<R> edificioId;
-    public PLong<R> personaID;
-    public PInstant<R> pago;
-    public PInteger<R> monto;
+    public QDepartamento.Assoc<R> departamento;
+    public QPersona.Assoc<R> persona;
+    public PInstant<R> fechaPago;
+    public QPago.Assoc<R> pagos;
 
     public Assoc(String name, R root) {
       super(name, root);

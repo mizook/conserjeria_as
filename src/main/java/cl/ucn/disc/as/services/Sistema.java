@@ -1,5 +1,6 @@
 package cl.ucn.disc.as.services;
 
+import cl.ucn.disc.as.exceptions.SistemaException;
 import cl.ucn.disc.as.model.*;
 import java.time.Instant;
 import java.util.List;
@@ -15,7 +16,7 @@ public interface Sistema {
      * @param edificio a agregar
      * @return the edificio added
      */
-    Edificio add(Edificio edificio);
+    Edificio add(Edificio edificio) throws SistemaException;
 
     /**
      * Agrega una persona al Sistema.
@@ -23,7 +24,7 @@ public interface Sistema {
      * @param persona a agregar
      * @return the persona added
      */
-    Persona add(Persona persona);
+    Persona add(Persona persona) throws SistemaException;
 
     /**
      * Agrega un departamento al Sistema.
@@ -32,7 +33,7 @@ public interface Sistema {
      * @param edificio al cual pertenece el departamento
      * @return the departamento added
      */
-    Departamento addDepartamento(Departamento departamento, Edificio edificio);
+    Departamento addDepartamento(Departamento departamento, Edificio edificio) throws SistemaException;
 
     /**
      * Agrega un departamento al Sistema utilizando el id del edificio.
@@ -41,7 +42,7 @@ public interface Sistema {
      * @param idEdificio the id of the Edificio to which the departamento belongs
      * @return the departamento added
      */
-    Departamento addDepartamento(Departamento departamento, Long idEdificio);
+    Departamento addDepartamento(Departamento departamento, Long idEdificio) throws SistemaException;
 
     /**
      * Realiza un contrato en el sistema.
@@ -51,7 +52,7 @@ public interface Sistema {
      * @param fechaPago fecha de pago acordada
      * @return the contrato realizado
      */
-    Contrato realizarContrato(Persona duenio, Departamento departamento, Instant fechaPago);
+    Contrato realizarContrato(Persona duenio, Departamento departamento, Instant fechaPago) throws SistemaException;
 
     /**
      * Realiza un contrato en el sistema utilizando los IDs.
@@ -61,7 +62,7 @@ public interface Sistema {
      * @param fechaPago fecha de pago acordada
      * @return the contrato realizado
      */
-    Contrato realizarContrato(Long idDuenio, Long idDepartamento, Instant fechaPago);
+    Contrato realizarContrato(Long idDuenio, Long idDepartamento, Instant fechaPago) throws SistemaException;
 
     /**
      * Añade un pago a un contrato.

@@ -1,0 +1,12 @@
+# Gradle files
+.gradle/
+build/
+
+# Ignore Gradle wrapper jar file (.jar)
+gradle-wrapper.jar
+
+# Ignore Gradle local properties file
+gradle.properties
+
+# Ignore Gradle wrapper properties
+gradle/wrapper/gradle-wrapper.properties

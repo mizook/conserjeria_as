@@ -10,6 +10,9 @@ import cl.ucn.disc.as.services.Sistema;
 
 import java.time.Instant;
 import java.util.List;
+import com.github.javafaker.Faker;
+
+import cl.ucn.disc.as.utils.RutGenerator;
 
 @Slf4j
 public final class main {
@@ -17,14 +20,22 @@ public final class main {
     public static void main(String[] args) throws SistemaException {
         Database db = DB.getDefault();
         Sistema sistema = new SistemaImpl(db);
+        Faker faker = new Faker();
 
-        Persona persona = Persona.builder()
-                .rut("23864911-0")
-                .nombre("Fulanito")
-                .apellidos("Perez Const")
-                .email("fulatino@dev.com")
-                .telefono("+56965552273")
-                .build();
+        RutGenerator rutGenerator = new RutGenerator();
+        List<String> ruts = rutGenerator.generateRuts(20, 1000000, 25000000);
+
+        for (int i = 0; i < 20; i++) {
+            Persona persona = Persona.builder()
+                    .rut(ruts.get(i))
+                    .nombre(faker.name().firstName())
+                    .apellidos(faker.name().lastName())
+                    .email(faker.internet().emailAddress())
+                    .telefono(faker.phoneNumber().phoneNumber())
+                    .build();
+            sistema.add(persona);
+        }
+        /**
         Edificio edificio = Edificio.builder()
                 .constructora("CHILECONSTRUYE")
                 .nombre("Y1")
@@ -46,5 +57,6 @@ public final class main {
         Pago pago = new Pago(contrato, fechaPago, 50000);
 
         sistema.addPago(contrato, pago);
+         **/
     }
 }

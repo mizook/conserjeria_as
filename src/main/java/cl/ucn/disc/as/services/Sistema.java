@@ -85,6 +85,11 @@ public interface Sistema {
     List<Persona> getPersonas();
 
     /**
+     * @return Lista de todas los edificios en el sistema.
+     */
+    List<Edificio> getEdificios();
+
+    /**
      * @return Devuelve a la persona encontrada por rut del sistema
      */
     Optional<Persona> getPersonaByRut(String rut);

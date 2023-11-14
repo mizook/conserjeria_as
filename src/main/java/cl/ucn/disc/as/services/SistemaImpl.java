@@ -124,6 +124,10 @@ public class SistemaImpl implements Sistema {
     public List<Persona> getPersonas() {
         return this.database.find(Persona.class).findList();
     }
+    @Override
+    public List<Edificio> getEdificios() {
+        return this.database.find(Edificio.class).findList();
+    }
 
     @Override
     public Optional<Persona> getPersonaByRut(String rut) {

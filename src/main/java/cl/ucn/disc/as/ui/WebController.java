@@ -40,5 +40,9 @@ public final class WebController implements RoutesConfigurator {
                 ctx.status(404).result("Persona no encontrada con el RUT: " + rut);
             }
         });
+
+        app.get("/edificios", ctx -> {
+            ctx.json(this.sistema.getEdificios());
+        });
     }
 }

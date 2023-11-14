@@ -4,6 +4,7 @@ import cl.ucn.disc.as.exceptions.SistemaException;
 import cl.ucn.disc.as.model.*;
 import java.time.Instant;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Sistema interface.
@@ -82,6 +83,11 @@ public interface Sistema {
      * @return Lista de todas las personas en el sistema.
      */
     List<Persona> getPersonas();
+
+    /**
+     * @return Devuelve a la persona encontrada por rut del sistema
+     */
+    Optional<Persona> getPersonaByRut(String rut);
 
     /**
      * Obtiene la lista de pagos basado en el RUT proporcionado.

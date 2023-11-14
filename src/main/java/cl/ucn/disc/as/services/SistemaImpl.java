@@ -10,7 +10,7 @@ import java.util.List;
 
 import javax.persistence.PersistenceException;
 import java.time.Instant;
-import java.util.List;
+import java.util.Optional;
 
 
 /**
@@ -123,6 +123,11 @@ public class SistemaImpl implements Sistema {
     @Override
     public List<Persona> getPersonas() {
         return this.database.find(Persona.class).findList();
+    }
+
+    @Override
+    public Optional<Persona> getPersonaByRut(String rut) {
+        return Optional.ofNullable(this.database.find(Persona.class).where().eq("rut", rut).findOne());
     }
 
     @Override

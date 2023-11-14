@@ -29,5 +29,16 @@ public final class WebController implements RoutesConfigurator {
         app.get("/personas", ctx -> {
             ctx.json(this.sistema.getPersonas());
         });
+
+        app.get("/personas/{rut}", ctx -> {
+            String rut = ctx.pathParam("rut");
+            Optional<Persona> persona = this.sistema.getPersonaByRut(rut);
+
+            if (persona.isPresent()) {
+                ctx.json(persona.get());
+            } else {
+                ctx.status(404).result("Persona no encontrada con el RUT: " + rut);
+            }
+        });
     }
 }

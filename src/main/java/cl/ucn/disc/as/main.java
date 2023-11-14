@@ -3,6 +3,7 @@ package cl.ucn.disc.as;
 import cl.ucn.disc.as.exceptions.SistemaException;
 import cl.ucn.disc.as.model.*;
 import cl.ucn.disc.as.services.SistemaImpl;
+
 import io.ebean.DB;
 import io.ebean.Database;
 import lombok.extern.slf4j.Slf4j;
@@ -14,14 +15,18 @@ import com.github.javafaker.Faker;
 
 import cl.ucn.disc.as.utils.RutGenerator;
 
+import cl.ucn.disc.as.ui.ApiRestServer;
+import cl.ucn.disc.as.ui.WebController;
+
 @Slf4j
 public final class main {
 
     public static void main(String[] args) throws SistemaException {
+        log.debug("Starting Main...");
+
         Database db = DB.getDefault();
         Sistema sistema = new SistemaImpl(db);
         Faker faker = new Faker();
-
         RutGenerator rutGenerator = new RutGenerator();
         List<String> ruts = rutGenerator.generateRuts(20, 1000000, 25000000);
 
@@ -45,6 +50,10 @@ public final class main {
                     .build();
             sistema.add(edificio);
         }
+
+        ApiRestServer.start(7070, new WebController());
+
+        log.debug("Done...");
 
         /**
         Departamento depto = new Departamento(edificio, 1, 10);

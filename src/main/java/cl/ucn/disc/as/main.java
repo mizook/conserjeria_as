@@ -35,14 +35,18 @@ public final class main {
                     .build();
             sistema.add(persona);
         }
-        /**
-        Edificio edificio = Edificio.builder()
-                .constructora("CHILECONSTRUYE")
-                .nombre("Y1")
-                .direccion("Angamos")
-                .pisos(20)
-                .build();
 
+        for (int i = 0; i < 5; i++) {
+            Edificio edificio = Edificio.builder()
+                    .constructora(faker.company().name())
+                    .nombre(faker.dragonBall().character())
+                    .direccion(faker.address().streetAddress())
+                    .pisos(faker.number().numberBetween(10,30))
+                    .build();
+            sistema.add(edificio);
+        }
+
+        /**
         Departamento depto = new Departamento(edificio, 1, 10);
         Departamento otroDepto = new Departamento(edificio, 2, 15);
 

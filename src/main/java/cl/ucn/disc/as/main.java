@@ -26,6 +26,7 @@ public final class main {
 
         Database db = DB.getDefault();
         Sistema sistema = new SistemaImpl(db);
+
         Faker faker = new Faker();
         RutGenerator rutGenerator = new RutGenerator();
         List<String> ruts = rutGenerator.generateRuts(20, 1000000, 25000000);
@@ -54,22 +55,5 @@ public final class main {
         ApiRestServer.start(7070, new WebController());
 
         log.debug("Done...");
-
-        /**
-        Departamento depto = new Departamento(edificio, 1, 10);
-        Departamento otroDepto = new Departamento(edificio, 2, 15);
-
-        sistema.add(persona);
-        edificio = sistema.add(edificio);
-        Long idEdificio = edificio.getId();
-        sistema.addDepartamento(depto, edificio);
-        sistema.addDepartamento(otroDepto, idEdificio);
-
-        Instant fechaPago = Instant.now();
-        Contrato contrato = sistema.realizarContrato(persona, depto, fechaPago);
-        Pago pago = new Pago(contrato, fechaPago, 50000);
-
-        sistema.addPago(contrato, pago);
-         **/
     }
 }

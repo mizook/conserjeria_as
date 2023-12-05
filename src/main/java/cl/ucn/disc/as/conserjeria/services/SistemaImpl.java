@@ -1,6 +1,11 @@
-package cl.ucn.disc.as.services;
-import cl.ucn.disc.as.exceptions.SistemaException;
-import cl.ucn.disc.as.model.*;
+package cl.ucn.disc.as.conserjeria.services;
+import cl.ucn.disc.as.conserjeria.exceptions.SistemaException;
+import cl.ucn.disc.as.conserjeria.model.*;
+import cl.ucn.disc.as.utils.RutGenerator;
+import cl.ucn.disc.as.utils.ValidationUtils;
+import com.github.javafaker.Faker;
+import com.github.javafaker.service.FakeValuesService;
+import com.github.javafaker.service.RandomService;
 import org.jetbrains.annotations.NotNull;
 import io.ebean.Database;
 import lombok.extern.slf4j.Slf4j;
@@ -10,6 +15,7 @@ import java.util.List;
 
 import javax.persistence.PersistenceException;
 import java.time.Instant;
+import java.util.Locale;
 import java.util.Optional;
 
 
@@ -31,6 +37,37 @@ public class SistemaImpl implements Sistema {
     public SistemaImpl(@NotNull Database database) {
 
         this.database = database;
+    }
+
+    /**
+     * Initialize
+     */
+    @Override
+    public void populate() {
+        Faker faker = new Faker();
+        RutGenerator rutGenerator = new RutGenerator();
+        List<String> ruts = rutGenerator.generateRuts(20, 1000000, 25000000);
+
+        for (int i = 0; i < 20; i++) {
+            Persona persona = Persona.builder()
+                    .rut(ruts.get(i))
+                    .nombre(faker.name().firstName())
+                    .apellidos(faker.name().lastName())
+                    .email(faker.internet().emailAddress())
+                    .telefono(faker.phoneNumber().phoneNumber())
+                    .build();
+            this.database.save(persona);
+        }
+
+        for (int i = 0; i < 5; i++) {
+            Edificio edificio = Edificio.builder()
+                    .constructora(faker.company().name())
+                    .nombre(faker.dragonBall().character())
+                    .direccion(faker.address().streetAddress())
+                    .pisos(faker.number().numberBetween(10,30))
+                    .build();
+            this.database.save(edificio);
+        }
     }
 
     /**

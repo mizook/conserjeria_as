@@ -1,28 +1,27 @@
-/*
- * Copyright (c) 2023. Arquitectura de Sistemas, DISC, UCN.
- */
+package cl.ucn.disc.as.conserjeria.model;
 
-package cl.ucn.disc.as.model;
-
-import cl.ucn.disc.as.exceptions.IllegalDomainException;
+import cl.ucn.disc.as.conserjeria.exceptions.IllegalDomainException;
 import cl.ucn.disc.as.utils.ValidationUtils;
+import io.ebean.annotation.Cache;
 import io.ebean.annotation.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.ToString;
 import lombok.Getter;
+import lombok.ToString;
+
 import javax.persistence.Entity;
 
 /**
  * The Persona class.
  *
- * @author Diego Urrutia-Astorga.
+ * @author Arquitectura de Software.
  */
+@Cache(enableQueryCache = true, nearCache = true)
+@Getter
 @ToString(callSuper = true)
 @AllArgsConstructor
 @Builder
 @Entity
-@Getter
 public class Persona extends BaseModel {
 
     /**
@@ -56,26 +55,35 @@ public class Persona extends BaseModel {
     private String telefono;
 
     /**
-     * The internal builder to validate.
+     * Custom builder to validate.
      */
     public static class PersonaBuilder {
+
         /**
          * @return the Persona.
          */
         public Persona build() {
-            // validate rut
+
+            // validate the rut
             if (!ValidationUtils.isRutValid(this.rut)) {
                 throw new IllegalDomainException("RUT no valido: " + this.rut);
             }
 
-            // validate email
+            // validate the email
             if (!ValidationUtils.isEmailValid(this.email)) {
-                throw new IllegalDomainException("Email not valid: " + this.email);
+                throw new IllegalDomainException("Email no valido: " + this.email);
             }
 
-            // TODO: Add the validations
+            // TODO: Agregar resto de validaciones
 
-            return new Persona(this.rut, this.nombre, this.apellidos, this.email, this.telefono);
+            return new Persona(
+                    this.rut,
+                    this.nombre,
+                    this.apellidos,
+                    this.email,
+                    this.telefono);
+
         }
+
     }
 }

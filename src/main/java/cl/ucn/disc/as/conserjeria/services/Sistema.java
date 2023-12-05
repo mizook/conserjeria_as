@@ -1,7 +1,8 @@
-package cl.ucn.disc.as.services;
+package cl.ucn.disc.as.conserjeria.services;
 
-import cl.ucn.disc.as.exceptions.SistemaException;
-import cl.ucn.disc.as.model.*;
+import cl.ucn.disc.as.conserjeria.exceptions.SistemaException;
+import cl.ucn.disc.as.conserjeria.model.*;
+
 import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
@@ -10,6 +11,11 @@ import java.util.Optional;
  * Sistema interface.
  */
 public interface Sistema {
+
+    /**
+     * Initialize
+     */
+    void populate();
 
     /**
      * Agrega un edificio al Sistema.

@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2023. Arquitectura de Software, DISC, UCN.
+ */
+
 package cl.ucn.disc.as.utils;
 
 import lombok.NonNull;
@@ -52,7 +56,7 @@ public final class ValidationUtils {
      * @param numeric to calculate.
      * @return the dv.
      */
-    private static String dv(final @NonNull String numeric) {
+    public static String dv(final @NonNull String numeric) {
         int m = 0;
         int s = 1;
         int t = Integer.parseInt(numeric);

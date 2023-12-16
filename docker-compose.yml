@@ -1,0 +1,10 @@
+version: '3'
+services:
+  web:
+    container_name: consejeria_sqlite_cr
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "7070:7070"
+    restart: always
